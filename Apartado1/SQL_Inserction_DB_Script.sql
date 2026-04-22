@@ -14,9 +14,9 @@ INSERT INTO dbmusicstreaming.canciones(id, titulo, genero, año, fk_albumes) VAL
 
 #CREAR LISTA CON TRES CANCIONES QUE ACABAS DE DAR DE ALTA
 INSERT INTO dbmusicstreaming.listas (id, nombre, fk_usuarios) VALUES (1, "MiLista1", 1);
-INSERT INTO dbmusicstreaming.tbi_listas_canciones (id, fk_listas, fk_canciones) VALUES (1, 1, 1);
-INSERT INTO dbmusicstreaming.tbi_listas_canciones (id, fk_listas, fk_canciones) VALUES (2, 1, 2);
-INSERT INTO dbmusicstreaming.tbi_listas_canciones (id, fk_listas, fk_canciones) VALUES (3, 1, 3);
+INSERT INTO dbmusicstreaming.listas_canciones (id, fk_listas, fk_canciones) VALUES (1, 1, 1);
+INSERT INTO dbmusicstreaming.listas_canciones (id, fk_listas, fk_canciones) VALUES (2, 1, 2);
+INSERT INTO dbmusicstreaming.listas_canciones (id, fk_listas, fk_canciones) VALUES (3, 1, 3);
 
 #REGISTRAR QUE EL USUARIO HA ESCUCHADO UNA DE LAS TRES CANCIONES
-INSERT INTO dbmusicstreaming.tbi_usuarios_canciones (id, fk_usuarios, fk_canciones) VALUES (1, 1, 2)
+INSERT INTO dbmusicstreaming.usuarios_canciones (id, fk_usuarios, fk_canciones) VALUES (1, 1, 2)

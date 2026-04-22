@@ -46,19 +46,38 @@ SELECT * FROM reserva WHERE reserva.id = 10;
 */
 
 #Consulta #5: obtener el nombre de los restaurantes con más de tres reservas de cuatro o más comensales para la fecha 01-04-2024.
-
-SELECT r.nombre FROM restaurante as r
+/*SELECT r.nombre FROM restaurante as r
 WHERE (
 	SELECT COUNT(*) FROM mesa as m
     JOIN reserva as re
 		ON m.id = re.mesa_id 
 	WHERE m.restaurante_id = r.id AND re.comensales >= 4 AND DATE(re.fecha_reserva) = '2024-04-01'
-) > 3;
+) > 3;*/
 
 #Consulta #6: obtener el aforo máximo del restaurante con id igual a 5.
+/*SELECT SUM(m.max_comensales) FROM mesa as m WHERE m.restaurante_id = 5;*/
 
-#Consulta #7: obtener las mesas que dispongan de espacio para dos comensales y que se encuentren disponibles (sin reserva) en el restaurante con id igual a 5 para la fecha y hora 31-12-2024 19:00.
+#Consulta Todo #7: obtener las mesas que dispongan de espacio para dos comensales y que se encuentren disponibles (sin reserva) en el restaurante con id igual a 5 para la fecha y hora 31-12-2024 19:00.
+# Duda: la fecha y hora son irrelevantes si la mesa no está disponible...
+SELECT * FROM mesa as m
+WHERE m.restaurante_id = 5 
+	AND (
+		SELECT COUNT(*) FROM reserva as r
+		WHERE r.mesa_id = m.id
+    ) = 0;
+  
 
 #Consulta #8: obtener el nombre del cliente que ha realizado más reservas en el restaurante con id igual a 1 entre las fechas 01-01-2024 y 31-12-2024 (ambos días inclusive).
-
+/*SELECT c.nombre
+FROM cliente c
+JOIN reserva r 
+	ON c.id = r.cliente_id
+JOIN mesa m 
+	ON m.id = r.mesa_id
+WHERE m.restaurante_id = 1
+  AND r.fecha_reserva >= '2024-01-01' 
+  AND r.fecha_reserva <= '2024-12-31'
+GROUP BY r.cliente_id
+ORDER BY COUNT(*) DESC
+LIMIT 1;*/
 
